@@ -5,9 +5,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
-public class Test {
-    public static void main(String[] args) {
+public class ScriptA {
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver = getInitFirefoxDriver();
+        driver.manage().window().maximize();
+
         driver.get("http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/");
         WebElement email = driver.findElement(By.id("email"));
         email.sendKeys("webinar.test@gmail.com");
@@ -17,8 +19,9 @@ public class Test {
         WebElement submitLogin = driver.findElement(By.name("submitLogin"));
         submitLogin.click();
 
-        WebElement avatarImg = driver.findElement(By.className("imgm img-thumbnail"));
-        //Thread.sleep(1000);
+        WebElement avatarImg = driver.findElement(By.xpath("//span[@class='employee_avatar_small']//img[@class='imgm img-thumbnail']"));
+
+            Thread.sleep(1000);
 
         avatarImg.click();
 
