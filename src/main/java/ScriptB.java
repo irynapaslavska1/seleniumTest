@@ -50,13 +50,11 @@ public class ScriptB {
         driver.navigate().to(driver.getCurrentUrl());
         Assert.assertEquals(driver.findElement(By.xpath("//li[contains(@class,\"maintab active\")]")).getText(), "Клиенты");
 
-
         WebElement supportTab = driver.findElement(By.id("subtab-AdminParentCustomerThreads"));
         supportTab.click();
         System.out.println(driver.findElement(By.xpath("//li[contains(@class,\"maintab active\")]")).getText());
         driver.navigate().to(driver.getCurrentUrl());
         Assert.assertEquals(driver.findElement(By.xpath("//li[contains(@class,\"maintab active\")]")).getText(), "Служба поддержки");
-
 
         WebElement statisticTab = driver.findElement(By.id("subtab-AdminStats"));
         statisticTab.click();

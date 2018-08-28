@@ -21,17 +21,16 @@ public class ScriptA {
 
         WebElement avatarImg = driver.findElement(By.xpath("//span[@class='employee_avatar_small']//img[@class='imgm img-thumbnail']"));
 
-            Thread.sleep(1000);
+        Thread.sleep(1000);
 
         avatarImg.click();
-
 
         WebElement logout = driver.findElement(By.id("header_logout"));
         logout.click();
 
         driver.quit();
-
     }
+
     public static WebDriver getInitFirefoxDriver(){
     System.setProperty("webdriver.gecko.driver","/Users/hs/seleniumTest/src/main/resources/geckodriver");
         return new FirefoxDriver();
