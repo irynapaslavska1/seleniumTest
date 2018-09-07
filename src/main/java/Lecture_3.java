@@ -14,19 +14,26 @@ public class Lecture_3 {
 
         WebDriver driver = getInitFirefoxDriver();
         driver.manage().window().maximize();
+        WebDriverWait wait;
 
         driver.get("http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/");
-        WebElement email = driver.findElement(By.id("email"));
+
+        WebElement email = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("email")));
         email.sendKeys("webinar.test@gmail.com");
 
-        WebElement passwd = driver.findElement(By.id("passwd"));
+        WebElement passwd = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("passwd")));
         passwd.sendKeys("Xcg7299bnSmMuRLp9ITw");
 
-        WebElement submitLogin = driver.findElement(By.name("submitLogin"));
+        WebElement submitLogin = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.name("submitLogin")));
         submitLogin.click();
 
-        WebElement catalogTab = driver.findElement(By.id("subtab-AdminCatalog"));
         Actions builder = new Actions(driver);
+        WebElement catalogTab = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("subtab-AdminCatalog")));
+        //WebElement catalogTab = driver.findElement(By.id("subtab-AdminCatalog"));
         builder.moveToElement(catalogTab).perform();
 
         WebElement categories = driver.findElement(By.xpath("//a[contains(text(),'категории')]"));
@@ -34,7 +41,11 @@ public class Lecture_3 {
         (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(text(),'категории')]")));
         categories.click();
 
-        WebElement addCategory = driver.findElement(By.id("page-header-desc-category-new_category"));
+        WebElement categoryForm = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("category_form")));
+
+        WebElement addCategory = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("page-header-desc-category-new_category")));
         addCategory.click();
 
         WebElement categoryName = driver.findElement(By.id("name_1"));
